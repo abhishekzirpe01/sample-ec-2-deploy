@@ -19,7 +19,7 @@ jobs:
       run: which rsync
     - name: Copy files to EC2
       run: |
-        rsync -avz ./ ${{secrets.EC2_USER}}@${{secrets.EC2_HOST}}:~/hello-world-app/
+        rsync -e "ssh -i C:\Users\Shree\Downloads\ec-2-deploy.pem -avz ./ ${{secrets.EC2_USER}}@${{secrets.EC2_HOST}}:~/hello-world-app/
     - name: Run app on EC2
       run: |
         ssh ${{ secrets.EC2_USER}}
