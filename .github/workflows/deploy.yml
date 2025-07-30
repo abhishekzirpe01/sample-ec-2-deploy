@@ -15,6 +15,8 @@ jobs:
         echo "${{secrets.EC2_SSH_KEY}}"> ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
         ssh-keyscan -H ${{secrets.EC2_HOST}} >> ~/.ssh/known_hosts
+    - name: Check rsync aviability
+      run: which rsync
     - name: Copy files to EC2
       run: |
         rsync -avz ./ ${{secrets.EC2_USER}}@${{secrets.EC2_HOST}}:~/hello-world-app/
