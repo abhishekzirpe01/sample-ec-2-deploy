@@ -18,8 +18,9 @@ jobs:
     
     - name: Upload to EC2
       run: |
-        scp -i ~/.ssh/is_rsa ./
-        ${{secrets.EC2_USER}}@${{secrets.EC2_HOST}}:~/hello-world-app/
+        scp -i ~/.ssh/is_rsa
+        ${{secrets.EC2_USER}} 
+        @${{secrets.EC2_HOST}}:~/hello-world-app/
         
         
     - name: Run app on EC2
